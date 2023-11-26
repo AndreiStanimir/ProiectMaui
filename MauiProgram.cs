@@ -3,42 +3,40 @@ using Microsoft.EntityFrameworkCore;
 using ProiectMaui;
 using Microsoft.Extensions.Logging;
 
-namespace ProiectMaui
+namespace ProiectMaui;
+
+public static class MauiProgram
 {
-    public static class MauiProgram
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
 #if DEBUG
-            builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
-            // Configure the database path
-            string databasePath = GetDatabasePath("db_cities.db");
+        // Configure the database path
+        string databasePath = GetDatabasePath("db_cities.db");
 
-            // Register your database context
-            builder.Services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlite($"Data Source={databasePath}"));
+        // Register your database context
+        builder.Services.AddSingleton(new DatabaseContext(databasePath));
 
-            return builder.Build();
-        }
+        return builder.Build();
+    }
 
-        private static string GetDatabasePath(string databaseName)
-        {
-            // Define the folder path to store the database file
-            string folderPath = FileSystem.AppDataDirectory;
+    private static string GetDatabasePath(string databaseName)
+    {
+        // Define the folder path to store the database file
+        string folderPath = FileSystem.AppDataDirectory;
 
-            // Combine the folder path and database name
-            return Path.Combine(folderPath, databaseName);
-        }
+        // Combine the folder path and database name
+        return Path.Combine(folderPath, databaseName);
     }
 }

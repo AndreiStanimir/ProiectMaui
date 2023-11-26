@@ -2,6 +2,8 @@
 using System.Text.Json;
 using System.IO;
 
+namespace ProiectMaui;
+
 public class DatabaseContext
 {
     private readonly SQLiteAsyncConnection Database;
