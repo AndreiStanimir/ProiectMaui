@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "city": "Tokyo",
+    "region": "Asia"
+  },
+  {
+    "id": 2,
+    "city": "Cairo",
+    "region": "Africa"
+  },
+  {
+    "id": 3,
+    "city": "Chicago",
+    "region": "North America"
+  },
+  {
+    "id": 4,
+    "city": "New York",
+    "region": "North America"
+  },
+  {
+    "id": 5,
+    "city": "London",
+    "region": "Europe"
+  },
+  {
+    "id": 6,
+    "city": "Beijing",
+    "region": "Asia"
+  },
+  {
+    "id": 7,
+    "city": "Singapore",
+    "region": "Asia"
+  },
+  {
+    "id": 8,
+    "city": "Sydney",
+    "region": "Oceania"
+  },
+  {
+    "id": 9,
+    "city": "Berlin",
+    "region": "Europe"
+  },
+  {
+    "id": 10,
+    "city": "Nairobi",
+    "region": "Africa"
+  },
+  {
+    "id": 11,
+    "city": "Paris",
+    "region": "Europe"
+  },
+  {
+    "id": 12,
+    "city": "Buenos Aires",
+    "region": "South America"
+  },
+  {
+    "id": 13,
+    "city": "Bucharest",
+    "region": "Europe"
+  },
+  {
+    "id": 14,
+    "city": "Miami",
+    "region": "North America"
+  },
+  {
+    "id": 15,
+    "city": "Oslo",
+    "region": "Europe"
+  }
+]
