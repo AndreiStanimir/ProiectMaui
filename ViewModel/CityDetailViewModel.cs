@@ -3,8 +3,9 @@ using System.Runtime.CompilerServices;
 
 namespace ProiectMaui
 {
-    internal class CityDetailViewModel : INotifyPropertyChanged
+    internal class CityDetailViewModel : ViewModelBase
     {
+
         private MajorCity _majorCity;
         public MajorCity MajorCity
         {
@@ -20,7 +21,7 @@ namespace ProiectMaui
 
         private int _majorCityId;
 
-        public CityDetailViewModel(int majorCityId)
+        public CityDetailViewModel(DatabaseContext context, int majorCityId) : base(context)
         {
             _majorCityId = majorCityId;
             LoadMajorCityDetails();
@@ -28,10 +29,8 @@ namespace ProiectMaui
 
         private void LoadMajorCityDetails()
         {
-            // Assuming you have a method to get major city details from the database
-            // MajorCity = databaseContext.GetMajorCityAsync(_majorCityId).Result;
+            MajorCity = _dbContext.GetMajorCitiesAsync().Result.Find(x => x.Id == _majorCityId);
 
-            // Replace the above with actual database call
         }
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

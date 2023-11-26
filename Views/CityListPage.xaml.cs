@@ -2,10 +2,13 @@ namespace ProiectMaui;
 
 public partial class CityListPage : ContentPage
 {
-    public CityListPage()
+    private readonly DatabaseContext DbContext;
+
+    public CityListPage(DatabaseContext dbContext)
     {
         InitializeComponent();
-        BindingContext = new CityListViewModel();
+        BindingContext = new CityListViewModel(dbContext);
+        DbContext = dbContext;
     }
 
     private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -14,7 +17,7 @@ public partial class CityListPage : ContentPage
         if (selectedCity != null)
         {
             // Navigate to CityDetailPage with the selected city's MajorCityId
-            await Navigation.PushAsync(new CityDetailPage(selectedCity.MajorCityId));
+            await Navigation.PushAsync(new CityDetailPage(DbContext, selectedCity.MajorCityId));
         }
     }
 }

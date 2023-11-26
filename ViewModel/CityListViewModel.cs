@@ -4,13 +4,11 @@ using System.Runtime.CompilerServices;
 
 namespace ProiectMaui
 {
-    internal class CityListViewModel : INotifyPropertyChanged
+    internal class CityListViewModel : ViewModelBase
     {
         public ObservableCollection<CityInfo> Cities { get; private set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public CityListViewModel()
+        public CityListViewModel(DatabaseContext dbContext) : base(dbContext)
         {
             Cities = new ObservableCollection<CityInfo>();
             LoadCities();
@@ -18,19 +16,7 @@ namespace ProiectMaui
 
         private void LoadCities()
         {
-            // Assuming you have a method to get cities from the database
-            // var cities = databaseContext.GetCitiesAsync().Result;
-            // foreach (var city in cities)
-            // {
-            //     Cities.Add(city);
-            // }
-
-            // Replace the above with actual database call
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            Cities = new(_dbContext.GetCitiesAsync().Result);
         }
     }
 }

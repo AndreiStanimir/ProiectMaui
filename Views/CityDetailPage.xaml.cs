@@ -2,9 +2,9 @@ namespace ProiectMaui;
 
 public partial class CityDetailPage : ContentPage
 {
-    public CityDetailPage(int majorCityId)
+    public CityDetailPage(DatabaseContext dbContext, int majorCityId)
     {
         InitializeComponent();
-        BindingContext = new CityDetailViewModel(majorCityId);
+        BindingContext = new CityDetailViewModel(dbContext, majorCityId);
     }
 }

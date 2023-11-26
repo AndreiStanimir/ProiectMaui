@@ -1,20 +1,23 @@
 ﻿using System.Reflection;
 
-public static class JsonFileReader
+namespace ProiectMaui
 {
-    public static async Task<string> ReadJsonFileAsync(string fileName)
+    public static class JsonFileReader
     {
-        var assembly = Assembly.GetExecutingAssembly();
-        var resourcePath = assembly.GetManifestResourceNames()
-            .FirstOrDefault(name => name.EndsWith(fileName, StringComparison.OrdinalIgnoreCase));
-
-        if (resourcePath != null)
+        public static async Task<string> ReadJsonFileAsync(string fileName)
         {
-            using Stream stream = assembly.GetManifestResourceStream(resourcePath);
-            using StreamReader reader = new StreamReader(stream);
-            return await reader.ReadToEndAsync();
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourcePath = assembly.GetManifestResourceNames()
+                .FirstOrDefault(name => name.EndsWith(fileName, StringComparison.OrdinalIgnoreCase));
+
+            if (resourcePath != null)
+            {
+                using Stream stream = assembly.GetManifestResourceStream(resourcePath);
+                using StreamReader reader = new StreamReader(stream);
+                return await reader.ReadToEndAsync();
+            }
+            throw new FileNotFoundException(fileName);
+            return null;
         }
-        throw new FileNotFoundException(fileName);
-        return null;
     }
 }
