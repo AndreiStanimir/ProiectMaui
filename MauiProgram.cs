@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using ProiectMaui;
+using Microsoft.Extensions.Logging;
 
 namespace ProiectMaui
 {
@@ -16,10 +19,26 @@ namespace ProiectMaui
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
+            // Configure the database path
+            string databasePath = GetDatabasePath("db_cities.db");
+
+            // Register your database context
+            builder.Services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlite($"Data Source={databasePath}"));
+
             return builder.Build();
+        }
+
+        private static string GetDatabasePath(string databaseName)
+        {
+            // Define the folder path to store the database file
+            string folderPath = FileSystem.AppDataDirectory;
+
+            // Combine the folder path and database name
+            return Path.Combine(folderPath, databaseName);
         }
     }
 }

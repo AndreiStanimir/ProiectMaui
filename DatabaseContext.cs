@@ -1,7 +1,8 @@
-﻿using SQLite;
+﻿using Microsoft.EntityFrameworkCore;
+using SQLite;
 using System.Text.Json;
 
-public class DatabaseContext
+public class DatabaseContext : DbContext
 {
     private readonly SQLiteAsyncConnection Database;
 
