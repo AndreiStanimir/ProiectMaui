@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace ProiectMaui;
+﻿namespace ProiectMaui;
 
 public partial class App : Application
 {

@@ -1,6 +1,33 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿
+/* Unmerged change from project 'ProiectMaui (net8.0-windows10.0.19041.0)'
+Before:
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ProiectMaui;
+After:
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+*/
+
+/* Unmerged change from project 'ProiectMaui (net8.0-maccatalyst)'
+Before:
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using ProiectMaui;
+After:
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+*/
+
+/* Unmerged change from project 'ProiectMaui (net8.0-android)'
+Before:
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using ProiectMaui;
+After:
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+*/
 using Microsoft.Extensions.Logging;
 
 namespace ProiectMaui;
