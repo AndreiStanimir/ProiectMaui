@@ -54,14 +54,15 @@ public static class MauiProgram
 
         // Register your database context
         builder.Services.AddSingleton(new DatabaseContext(databasePath));
-
-        return builder.Build();
+        var app = builder.Build();
+        //app.MainPage = new StartupPage()
+        return app;
     }
 
     private static string GetDatabasePath(string databaseName)
     {
         // Define the folder path to store the database file
-        string folderPath = FileSystem.AppDataDirectory;
+        string folderPath = "C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\";//FileSystem.AppDataDirectory;
 
         // Combine the folder path and database name
         return Path.Combine(folderPath, databaseName);

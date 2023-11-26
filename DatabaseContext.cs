@@ -24,20 +24,21 @@ using System.Text.Json;
 
 namespace ProiectMaui;
 
-public class DatabaseContext
+public class DatabaseContext 
 {
     private readonly SQLiteAsyncConnection Database;
 
     public DatabaseContext(string dbPath)
     {
         Database = new SQLiteAsyncConnection(dbPath);
+        Database.Trace= true;
         InitializeDatabaseAsync().Wait();
     }
 
     private async Task InitializeDatabaseAsync()
     {
-        await Database.CreateTableAsync<MajorCity>();
-        await Database.CreateTableAsync<CityInfo>();
+        
+        await Database.CreateTablesAsync(CreateFlags.AllImplicit, typeof(CityInfo), typeof(MajorCity));
         // Optionally, include seed data or additional initialization here
         string cityInfoJson = await JsonFileReader.ReadJsonFileAsync("Data/city_region.json");
         string majorCityJson = await JsonFileReader.ReadJsonFileAsync("Data/major_cities.json");
