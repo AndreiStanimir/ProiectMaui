@@ -1,16 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SQLite;
+﻿using SQLite;
 using System.Text.Json;
+using System.IO;
 
-public class DatabaseContext : DbContext
+public class DatabaseContext
 {
     private readonly SQLiteAsyncConnection Database;
 
     public DatabaseContext(string dbPath)
     {
         Database = new SQLiteAsyncConnection(dbPath);
-        Database.CreateTableAsync<MajorCity>().Wait();
-        Database.CreateTableAsync<CityInfo>().Wait();
+        InitializeDatabaseAsync().Wait();
+    }
+
+    private async Task InitializeDatabaseAsync()
+    {
+        await Database.CreateTableAsync<MajorCity>();
+        await Database.CreateTableAsync<CityInfo>();
+        // Optionally, include seed data or additional initialization here
+        string cityInfoJson = await JsonFileReader.ReadJsonFileAsync("Data/city_region.json");
+        string majorCityJson = await JsonFileReader.ReadJsonFileAsync("Data/major_cities.json");
+
+        await InsertCitiesFromJsonAsync(cityInfoJson);
+        await InsertMajorCitiesFromJsonAsync(majorCityJson);
     }
 
     public Task<List<CityInfo>> GetCitiesAsync()
@@ -29,6 +40,7 @@ public class DatabaseContext : DbContext
                         .Where(ci => ci.MajorCityId == majorCityId)
                         .FirstOrDefaultAsync();
     }
+
     public async Task InsertCitiesFromJsonAsync(string cityInfoJsonPath)
     {
         string cityInfoJson = File.ReadAllText(cityInfoJsonPath);
