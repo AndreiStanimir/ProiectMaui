@@ -1,4 +1,6 @@
-﻿namespace ProiectMaui;
+﻿using System.Resources;
+
+namespace ProiectMaui;
 
 public partial class App : Application
 {

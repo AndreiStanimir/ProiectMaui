@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using System.Text.Json;
 /* Unmerged change from project 'ProiectMaui (net8.0-windows10.0.19041.0)'
 Before:
 using System.IO;

@@ -17,8 +17,6 @@ namespace ProiectMaui
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private int _majorCityId;
 
         public CityDetailViewModel(DatabaseContext context, int majorCityId) : base(context)
@@ -31,11 +29,6 @@ namespace ProiectMaui
         {
             MajorCity = _dbContext.GetMajorCitiesAsync().Result.Find(x => x.Id == _majorCityId);
 
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
