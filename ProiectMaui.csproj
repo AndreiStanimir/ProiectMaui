@@ -59,11 +59,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Resources\raw\city_region.json" />
-        <None Remove="Resources\Raw\major_cities.json" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="8.0.0" />
@@ -73,15 +68,6 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
         <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
         <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.7" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <MauiAsset Include="Resources\Data\city_region.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </MauiAsset>
-        <MauiAsset Include="Resources\Data\major_cities.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </MauiAsset>
     </ItemGroup>
 
     <ItemGroup>
@@ -106,7 +92,17 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Resources\Data\" />
       <Folder Include="Resources\Styles\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiAsset Update="Resources\Raw\city_region.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\major_cities.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiAsset>
     </ItemGroup>
 
 </Project>

@@ -37,14 +37,15 @@ public class DatabaseContext
 
     private async Task InitializeDatabaseAsync()
     {
-        
-        await Database.CreateTablesAsync(CreateFlags.AllImplicit, typeof(CityInfo), typeof(MajorCity));
-        // Optionally, include seed data or additional initialization here
-        string cityInfoJson = await JsonFileReader.ReadJsonFileAsync("Data/city_region.json");
-        string majorCityJson = await JsonFileReader.ReadJsonFileAsync("Data/major_cities.json");
 
-        await InsertCitiesFromJsonAsync(cityInfoJson);
-        await InsertMajorCitiesFromJsonAsync(majorCityJson);
+        //await Database.CreateTablesAsync(CreateFlags.AllImplicit, typeof(CityInfo), typeof(MajorCity));
+        // Optionally, include seed data or additional initialization here
+        string mainDir = FileSystem.Current.AppDataDirectory;
+        //string cityInfoJson = await JsonFileReader.ReadJsonFileAsync("C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\Resources\\Raw\\city_region.json");
+        //string majorCityJson = await JsonFileReader.ReadJsonFileAsync("C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\Resources\\Raw\\major_cities.json");
+
+        await InsertCitiesFromJsonAsync("C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\Resources\\Raw\\city_region.json");
+        await InsertMajorCitiesFromJsonAsync("C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\Resources\\Raw\\major_cities.json");
     }
 
     public Task<List<CityInfo>> GetCitiesAsync()
@@ -67,10 +68,14 @@ public class DatabaseContext
     public async Task InsertCitiesFromJsonAsync(string cityInfoJsonPath)
     {
         string cityInfoJson = File.ReadAllText(cityInfoJsonPath);
-        var cities = JsonSerializer.Deserialize<List<CityInfo>>(cityInfoJson);
+        var cities = JsonSerializer.Deserialize<List<CityInfo>>(cityInfoJson, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
 
         if (cities != null)
         {
+            //await Database.InsertAllAsync(cities);
             await Database.InsertAllAsync(cities);
         }
     }
@@ -78,7 +83,10 @@ public class DatabaseContext
     public async Task InsertMajorCitiesFromJsonAsync(string majorCityJsonPath)
     {
         string majorCityJson = File.ReadAllText(majorCityJsonPath);
-        var majorCities = JsonSerializer.Deserialize<List<MajorCity>>(majorCityJson);
+        var majorCities = JsonSerializer.Deserialize<List<MajorCity>>(majorCityJson, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
 
         if (majorCities != null)
         {
