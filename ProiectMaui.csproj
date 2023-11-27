@@ -90,6 +90,9 @@
         <MauiXaml Update="Views\MainPage.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
+        <MauiXaml Update="Views\WeatherChartPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
     </ItemGroup>
 
     <ItemGroup>

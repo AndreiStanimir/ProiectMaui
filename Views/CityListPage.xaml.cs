@@ -14,7 +14,7 @@ public partial class CityListPage : ContentPage
         if (selectedCity != null)
         {
             // Navigate to CityDetailPage with the selected city's WeatherId
-            await Navigation.PushAsync(new CityDetailPage(selectedCity.City),true);
+            await Navigation.PushAsync(new CityDetailPage(selectedCity.City), true);
         }
     }
 }

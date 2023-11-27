@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-namespace ProiectMaui
+﻿namespace ProiectMaui
 {
     public class CityDetailViewModel : ViewModelBase
     {

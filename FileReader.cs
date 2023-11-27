@@ -1,13 +1,10 @@
-﻿using System.IO;
-using System.Reflection;
-
-namespace ProiectMaui
+﻿namespace ProiectMaui
 {
     public static class JsonFileReader
     {
         public static async Task<string> ReadJsonFileAsync(string fileName)
         {
-            using StreamReader reader = new StreamReader(new FileStream(fileName,FileMode.Open));
+            using StreamReader reader = new StreamReader(new FileStream(fileName, FileMode.Open));
             return reader.ReadToEnd();
             //var assembly = Assembly.GetExecutingAssembly();
             //var resourcePath = assembly.GetManifestResourceNames()

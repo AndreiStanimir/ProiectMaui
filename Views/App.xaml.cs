@@ -1,6 +1,4 @@
-﻿using System.Resources;
-
-namespace ProiectMaui;
+﻿namespace ProiectMaui;
 
 public partial class App : Application
 {
@@ -9,5 +7,6 @@ public partial class App : Application
         InitializeComponent();
         var dbContext = MauiProgram.CreateMauiApp().Services.GetService<DatabaseContext>();
         MainPage = new CityListPage();
+        //MainPage = new WeatherChartPage();
     }
 }

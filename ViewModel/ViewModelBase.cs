@@ -9,7 +9,7 @@ namespace ProiectMaui
 
         public ViewModelBase()
         {
-            _dbContext= MauiProgram.CreateMauiApp().Services.GetService<DatabaseContext>();
+            _dbContext = MauiProgram.CreateMauiApp().Services.GetService<DatabaseContext>();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
