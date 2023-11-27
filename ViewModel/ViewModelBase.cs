@@ -3,13 +3,13 @@ using System.Runtime.CompilerServices;
 
 namespace ProiectMaui
 {
-    internal class ViewModelBase
+    public class ViewModelBase
     {
         protected readonly DatabaseContext _dbContext;
 
-        public ViewModelBase(DatabaseContext dbContext)
+        public ViewModelBase()
         {
-            _dbContext = dbContext;
+            _dbContext= MauiProgram.CreateMauiApp().Services.GetService<DatabaseContext>();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -7,7 +7,7 @@ public partial class CityListPage : ContentPage
     public CityListPage(DatabaseContext dbContext)
     {
         InitializeComponent();
-        BindingContext = new CityListViewModel(dbContext);
+        BindingContext = new CityListViewModel();
         DbContext = dbContext;
     }
 

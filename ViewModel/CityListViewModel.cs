@@ -2,11 +2,11 @@
 
 namespace ProiectMaui
 {
-    internal class CityListViewModel : ViewModelBase
+    public class CityListViewModel : ViewModelBase
     {
         public ObservableCollection<CityInfo> Cities { get; private set; }
 
-        public CityListViewModel(DatabaseContext dbContext) : base(dbContext)
+        public CityListViewModel() : base()
         {
             Cities = new ObservableCollection<CityInfo>();
             LoadCities();
@@ -14,7 +14,7 @@ namespace ProiectMaui
 
         private void LoadCities()
         {
-            Cities = new(_dbContext.GetCitiesAsync().Result);
+            Cities = new(_dbContext.GetCitiesAsync());
         }
     }
 }

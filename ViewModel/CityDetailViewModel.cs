@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace ProiectMaui
 {
-    internal class CityDetailViewModel : ViewModelBase
+    public class CityDetailViewModel : ViewModelBase
     {
 
         private MajorCity _majorCity;
@@ -19,7 +19,7 @@ namespace ProiectMaui
 
         private int _majorCityId;
 
-        public CityDetailViewModel(DatabaseContext context, int majorCityId) : base(context)
+        public CityDetailViewModel(int majorCityId) : base()
         {
             _majorCityId = majorCityId;
             LoadMajorCityDetails();
@@ -27,7 +27,7 @@ namespace ProiectMaui
 
         private void LoadMajorCityDetails()
         {
-            MajorCity = _dbContext.GetMajorCitiesAsync().Result.Find(x => x.Id == _majorCityId);
+            MajorCity = _dbContext.GetMajorCitiesAsync().Find(x => x.Id == _majorCityId);
 
         }
     }
