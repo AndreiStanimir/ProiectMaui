@@ -2,13 +2,10 @@ namespace ProiectMaui;
 
 public partial class CityListPage : ContentPage
 {
-    private readonly DatabaseContext DbContext;
-
-    public CityListPage(DatabaseContext dbContext)
+    public CityListPage()
     {
         InitializeComponent();
         BindingContext = new CityListViewModel();
-        DbContext = dbContext;
     }
 
     private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -16,8 +13,8 @@ public partial class CityListPage : ContentPage
         var selectedCity = e.CurrentSelection.FirstOrDefault() as CityInfo;
         if (selectedCity != null)
         {
-            // Navigate to CityDetailPage with the selected city's MajorCityId
-            await Navigation.PushAsync(new CityDetailPage(DbContext, selectedCity.MajorCityId));
+            // Navigate to CityDetailPage with the selected city's WeatherId
+            await Navigation.PushAsync(new CityDetailPage(selectedCity.City),true);
         }
     }
 }

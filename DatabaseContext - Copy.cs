@@ -17,11 +17,11 @@
 //    private async Task InitializeDatabaseAsync()
 //    {
 
-//        //await Database.CreateTablesAsync(CreateFlags.AllImplicit, typeof(CityInfo), typeof(MajorCity));
+//        //await Database.CreateTablesAsync(CreateFlags.AllImplicit, typeof(CityInfo), typeof(Weather));
 //        // Optionally, include seed data or additional initialization here
 //        string mainDir = FileSystem.Current.AppDataDirectory;
 //        //string cityInfoJson = await JsonFileReader.ReadJsonFileAsync("C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\Resources\\Raw\\city_region.json");
-//        //string majorCityJson = await JsonFileReader.ReadJsonFileAsync("C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\Resources\\Raw\\major_cities.json");
+//        //string WeatherJson = await JsonFileReader.ReadJsonFileAsync("C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\Resources\\Raw\\major_cities.json");
 
 //        await InsertCitiesFromJsonAsync("C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\Resources\\Raw\\city_region.json");
 //        await InsertMajorCitiesFromJsonAsync("C:\\Users\\andrei.stanimir\\source\\repos\\ProiectMaui\\Resources\\Raw\\major_cities.json");
@@ -32,15 +32,15 @@
 //        return Database.Table<CityInfo>().ToListAsync();
 //    }
 
-//    public Task<List<MajorCity>> GetMajorCitiesAsync()
+//    public Task<List<Weather>> GetMajorCitiesAsync()
 //    {
-//        return Database.Table<MajorCity>().ToListAsync();
+//        return Database.Table<Weather>().ToListAsync();
 //    }
 
-//    public Task<CityInfo> GetCityInfoByMajorCityIdAsync(int majorCityId)
+//    public Task<CityInfo> GetCityInfoByWeatherIdAsync(int WeatherId)
 //    {
 //        return Database.Table<CityInfo>()
-//                        .Where(ci => ci.MajorCityId == majorCityId)
+//                        .Where(ci => ci.WeatherId == WeatherId)
 //                        .FirstOrDefaultAsync();
 //    }
 
@@ -59,10 +59,10 @@
 //        }
 //    }
 
-//    public async Task InsertMajorCitiesFromJsonAsync(string majorCityJsonPath)
+//    public async Task InsertMajorCitiesFromJsonAsync(string WeatherJsonPath)
 //    {
-//        string majorCityJson = File.ReadAllText(majorCityJsonPath);
-//        var majorCities = JsonSerializer.Deserialize<List<MajorCity>>(majorCityJson, new JsonSerializerOptions
+//        string WeatherJson = File.ReadAllText(WeatherJsonPath);
+//        var majorCities = JsonSerializer.Deserialize<List<Weather>>(WeatherJson, new JsonSerializerOptions
 //        {
 //            PropertyNameCaseInsensitive = true
 //        });

@@ -1,6 +1,7 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 
-public class MajorCity
+public class Weather
 {
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
@@ -13,4 +14,7 @@ public class MajorCity
     public double Precip { get; set; }
     public string Sunrise { get; set; } // or use TimeSpan or DateTime
     public string Sunset { get; set; } // or use TimeSpan or DateTime
+
+    [ForeignKey(typeof(CityInfo))]
+    public int CityInfoId { get; set; }
 }

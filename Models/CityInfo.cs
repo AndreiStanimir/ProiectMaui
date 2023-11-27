@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 public class CityInfo
 {
@@ -7,6 +8,7 @@ public class CityInfo
     public string City { get; set; }
     public string Region { get; set; }
 
-    // Foreign key reference to MajorCity
-    public int MajorCityId { get; set; }
+    // Foreign key reference to Weather
+    [OneToMany]
+    public List<Weather> Weather { get; set; } = new();
 }

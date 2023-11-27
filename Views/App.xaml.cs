@@ -8,6 +8,6 @@ public partial class App : Application
     {
         InitializeComponent();
         var dbContext = MauiProgram.CreateMauiApp().Services.GetService<DatabaseContext>();
-        MainPage = new CityListPage(dbContext);
+        MainPage = new CityListPage();
     }
 }

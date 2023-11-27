@@ -6,29 +6,28 @@ namespace ProiectMaui
     public class CityDetailViewModel : ViewModelBase
     {
 
-        private MajorCity _majorCity;
-        public MajorCity MajorCity
+        private Weather _Weather;
+        public Weather Weather
         {
-            get => _majorCity;
+            get => _Weather;
             set
             {
-                _majorCity = value;
+                _Weather = value;
                 OnPropertyChanged();
             }
         }
 
-        private int _majorCityId;
+        private string Name;
 
-        public CityDetailViewModel(int majorCityId) : base()
+        public CityDetailViewModel(string name) : base()
         {
-            _majorCityId = majorCityId;
-            LoadMajorCityDetails();
+            Name = name;
+            LoadWeatherDetails();
         }
 
-        private void LoadMajorCityDetails()
+        private void LoadWeatherDetails()
         {
-            MajorCity = _dbContext.GetMajorCitiesAsync().Find(x => x.Id == _majorCityId);
-
+            Weather = _dbContext.GetMajorCitiesAsync().Find(x => x.Name == Name);
         }
     }
 }

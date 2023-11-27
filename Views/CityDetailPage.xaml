@@ -6,11 +6,11 @@
              Title="City Details">
 
     <StackLayout Padding="10">
-        <Label Text="{Binding MajorCity.Name}" 
+        <Label Text="{Binding Weather.Name}" 
                FontSize="Large" 
                FontAttributes="Bold"/>
         <!-- Display other details like temperature, humidity, etc. -->
-        <Label Text="{Binding MajorCity.Temp}" 
+        <Label Text="{Binding Weather.Temp}" 
                FontAttributes="Italic"/>
         <!-- Add more labels for other properties -->
     </StackLayout>
