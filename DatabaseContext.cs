@@ -1,6 +1,6 @@
-﻿using SQLite;
+﻿using Newtonsoft.Json;
+using SQLite;
 using SQLiteNetExtensions.Extensions;
-using System.Text.Json;
 
 namespace ProiectMaui;
 
@@ -52,10 +52,7 @@ public class DatabaseContext
     public async Task InsertCitiesFromJsonAsync(string cityInfoJsonPath)
     {
         string cityInfoJson = File.ReadAllText(cityInfoJsonPath);
-        var cities = JsonSerializer.Deserialize<List<CityInfo>>(cityInfoJson, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var cities = JsonConvert.DeserializeObject<List<CityInfo>>(cityInfoJson);
 
         if (cities != null)
         {
@@ -67,10 +64,7 @@ public class DatabaseContext
     public async Task InsertMajorCitiesFromJsonAsync(string WeatherJsonPath)
     {
         string WeatherJson = File.ReadAllText(WeatherJsonPath);
-        var weathers = JsonSerializer.Deserialize<List<Weather>>(WeatherJson, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var weathers = JsonConvert.DeserializeObject<List<Weather>>(WeatherJson);
 
         if (weathers != null)
         {

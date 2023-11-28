@@ -2,31 +2,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProiectMaui.WeatherChartPage"
              xmlns:viewmodels="clr-namespace:ProiectMaui"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
              Title="Weather Chart"
              BackgroundColor="White">
     <ContentPage.BindingContext>
         <viewmodels:WeatherChartViewModel />
     </ContentPage.BindingContext>
-    <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center" VerticalOptions="Start">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center" VerticalOptions="Start">
 
-            <Label Text="Select Date Range" FontSize="Medium" HorizontalOptions="Center"/>
-            <DatePicker x:Name="fromDatePicker" Format="D" HorizontalOptions="Fill"/>
-            <DatePicker x:Name="toDatePicker" Format="D" HorizontalOptions="Fill"/>
+                <Label Text="Select Date Range" FontSize="Medium" HorizontalOptions="Center" TextColor="red"/>
 
-            <Label Text="Select a City" FontSize="Medium" HorizontalOptions="Center"/>
-            <Picker x:Name="cityPicker" Title="Select a City" HorizontalOptions="Fill" 
-                    ItemsSource="{Binding Cities}"
-                    ItemDisplayBinding="{Binding Name}" >
-                <!-- Items will be populated dynamically -->
-            </Picker>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <DatePicker x:Name="fromDatePicker" Grid.Column="0" HorizontalOptions="Fill" TextColor="red" Format="M/d/yyyy"/>
+                    <DatePicker x:Name="toDatePicker" Grid.Column="1" HorizontalOptions="Fill" TextColor="red" Format="M/d/yyyy"/>
+                </Grid>
+
+                <Label Text="Select a City" FontSize="Medium" HorizontalOptions="Center" TextColor="red"/>
+                <Picker x:Name="cityPicker" Title="Select City" HorizontalOptions="Fill" 
+            >
+                </Picker>
+
+                <!-- Other elements -->
+
+            </VerticalStackLayout>
 
             <!-- Placeholder for Weather Chart -->
-            <Frame BorderColor="LightGray" Padding="5" CornerRadius="10">
-                <Label Text="Weather Chart Will Appear Here" HorizontalOptions="Center" VerticalOptions="Center" />
-            </Frame>
-
-        </VerticalStackLayout>
-    </ScrollView>
+             <!--<lvc:CartesianChart
+                     Series="{Binding Series}"
+                     XAxes="{Binding XAxes}"
+                     LegendPosition="Right">
+                </lvc:CartesianChart>-->
+        </Grid>
+    </ContentPage.Content>
 
 </ContentPage>
