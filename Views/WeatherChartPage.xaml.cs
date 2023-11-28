@@ -1,3 +1,5 @@
+using System.Collections.ObjectModel;
+
 namespace ProiectMaui;
 
 public partial class WeatherChartPage : ContentPage
@@ -7,7 +9,7 @@ public partial class WeatherChartPage : ContentPage
     {
         BindingContext = new WeatherChartViewModel();
         InitializeComponent();
-        cityPicker.ItemsSource = WeatherChartViewModel.Cities;
+        cityPicker.ItemsSource = new ObservableCollection<CityInfo>(WeatherChartViewModel.Cities).ToList();
         cityPicker.ItemDisplayBinding = new Binding(nameof(CityInfo.City));
     }
 

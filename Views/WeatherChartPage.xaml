@@ -29,9 +29,7 @@
                 </Grid>
 
                 <Label Text="Select a City" FontSize="Medium" HorizontalOptions="Center" TextColor="red"/>
-                <Picker x:Name="cityPicker" Title="Select City" HorizontalOptions="Fill" 
-            >
-                </Picker>
+                <Picker x:Name="cityPicker" Title="Select City" HorizontalOptions="Fill" />
 
                 <!-- Other elements -->
 
