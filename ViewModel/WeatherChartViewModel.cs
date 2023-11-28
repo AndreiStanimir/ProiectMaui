@@ -12,7 +12,7 @@ namespace ProiectMaui
     public class WeatherChartViewModel : ViewModelBase
     {
         public ObservableCollection<CityInfo> Cities { get; private set; }
-        public ICommand LoadDataCommand { get; }
+        public Command LoadDataCommand { get; }
 
         public WeatherChartViewModel()
         {
