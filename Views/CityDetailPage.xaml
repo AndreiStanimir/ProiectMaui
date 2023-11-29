@@ -1,17 +1,33 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<?xaml-comp compile="true" ?>
-    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProiectMaui.CityDetailPage"
-             Title="City Details">
+             Title="City Details"
+             BackgroundColor="#F5F5F5">
 
-    <StackLayout Padding="10">
-        <Label Text="{Binding Weather.Name}" 
-               FontSize="Large" 
-               FontAttributes="Bold"/>
-        <!-- Display other details like temperature, humidity, etc. -->
-        <Label Text="{Binding Weather.Temp}" 
-               FontAttributes="Italic"/>
-        <!-- Add more labels for other properties -->
-    </StackLayout>
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="15">
+            <!-- City Name -->
+            <Frame BackgroundColor="#4CAF50" Padding="10" CornerRadius="10">
+                <Label Text="{Binding Weather.Name}" 
+                       FontSize="Large" 
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Center"/>
+            </Frame>
+
+            <!-- Weather Details -->
+            <Frame BackgroundColor="LightBlue" Padding="10" CornerRadius="10">
+                <StackLayout>
+                    <Label TextColor="Red" Text="{Binding Weather.Datetime, StringFormat='Date: {0:MM/dd/yyyy}'}"/>
+                    <Label TextColor="Red" Text="{Binding Weather.Temp, StringFormat='Current Temp: {0}°'}"/>
+                    <Label TextColor="Red" Text="{Binding Weather.TempMax, StringFormat='Max Temp: {0}°'}"/>
+                    <Label TextColor="Red" Text="{Binding Weather.TempMin, StringFormat='Min Temp: {0}°'}"/>
+                    <Label TextColor="Red" Text="{Binding Weather.Humidity, StringFormat='Humidity: {0}%'}"/>
+                    <Label TextColor="Red" Text="{Binding Weather.Precip, StringFormat='Precipitation: {0}mm'}"/>
+                    <Label TextColor="Red" Text="{Binding Weather.Sunrise, StringFormat='Sunrise: {0:hh\\:mm\\:ss}'}"/>
+                    <Label TextColor="Red" Text="{Binding Weather.Sunset, StringFormat='Sunset: {0:hh\\:mm\\:ss}'}"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

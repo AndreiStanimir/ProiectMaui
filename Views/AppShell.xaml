@@ -4,12 +4,37 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ProiectMaui"
-    Shell.FlyoutBehavior="Disabled"
+    Shell.FlyoutBehavior="Locked"
     Title="ProiectMaui">
 
+    <!-- Home -->
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate local:CityListPage}"
+        Route="HomePage" />
+
+    <!-- City Details -->
+    <ShellContent
+        Title="City Details"
+        ContentTemplate="{DataTemplate local:CityDetailPage}"
+        Route="CityDetails" />
+
+    <!-- Weather Analysis -->
+    <ShellContent
+        Title="Weather Analysis"
+        ContentTemplate="{DataTemplate local:WeatherChartPage}"
+        Route="WeatherChartPage" />
+
+    <!-- Settings -->
+    <!--<ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate local:SettingsPage}"
+        Route="Settings" />
+
+    --><!-- About --><!--
+    <ShellContent
+        Title="About"
+        ContentTemplate="{DataTemplate local:AboutPage}"
+        Route="About" />-->
 
 </Shell>

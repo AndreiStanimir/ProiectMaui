@@ -1,28 +1,38 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<?xaml-comp compile="true" ?>
-    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:ProiectMaui"
              x:Class="ProiectMaui.CityListPage"
              Title="Cities List"
-                 >
+             BackgroundColor="#F5F5F5">
+    <!-- Light gray background -->
+
     <ContentPage.BindingContext>
         <viewmodels:CityListViewModel />
     </ContentPage.BindingContext>
+
     <CollectionView ItemsSource="{Binding Cities}"
                     SelectionMode="Single"
                     SelectionChanged="OnSelectionChanged">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Horizontal" Span="{OnIdiom Phone=2, Tablet=3, Desktop=3,Default=3}" />
+        </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <StackLayout Padding="10">
-                    <Label Text="{Binding City}" 
-                           FontAttributes="Bold"
-                           BackgroundColor="White"
-                           TextColor="Green"
-                           FontSize="23"/>
-                    <Label Text="{Binding Region}" 
-                           FontAttributes="Italic"/>
-                </StackLayout>
+                <Frame BackgroundColor="#4CAF50"
+                    CornerRadius="10"
+                       Padding="10">
+                    <StackLayout>
+                        <Label Text="{Binding City}" 
+                               FontAttributes="Bold"
+                               TextColor="White" 
+                            FontSize="20"/>
+                        <Label Text="{Binding Region}" 
+                               FontAttributes="Italic"
+                               TextColor="White"/>
+                        <Label Text="{Binding Temperature}"
+                                TextColor="White"/>
+                    </StackLayout>
+                </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

@@ -7,6 +7,7 @@ public partial class App : Application
         InitializeComponent();
         var dbContext = MauiProgram.CreateMauiApp().Services.GetService<DatabaseContext>();
         //MainPage = new NavigationPage(new CityListPage());
-        MainPage = new NavigationPage(new WeatherChartPage());
+        //MainPage = new NavigationPage(new WeatherChartPage());
+        MainPage = new AppShell();
     }
 }

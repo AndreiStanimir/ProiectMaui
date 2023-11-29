@@ -9,8 +9,9 @@ public partial class WeatherChartPage : ContentPage
     {
         BindingContext = new WeatherChartViewModel();
         InitializeComponent();
-        cityPicker.ItemsSource = new ObservableCollection<CityInfo>(WeatherChartViewModel.Cities).ToList();
-        cityPicker.ItemDisplayBinding = new Binding(nameof(CityInfo.City));
+        //cityPicker.ItemsSource = new ObservableCollection<CityInfo>(WeatherChartViewModel.Cities).ToArray();
+        //cityPicker.ItemDisplayBinding = new Binding(nameof(CityInfo.City));
+        //cityPicker.ItemsSource = new List<string> { "aa", "Bb" };
     }
 
     private void toDatePicker_DateSelected(object sender, DateChangedEventArgs e)

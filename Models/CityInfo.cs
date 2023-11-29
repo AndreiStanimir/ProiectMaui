@@ -8,6 +8,7 @@ public class CityInfo
     public string City { get; set; }
     public string Region { get; set; }
 
+    public string? Temperature { get => Weather.OrderByDescending(weather => weather.Datetime).FirstOrDefault()?.Temp.ToString(); }
     // Foreign key reference to Weather
     [OneToMany]
     public List<Weather> Weather { get; set; } = new();
