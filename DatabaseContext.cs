@@ -42,6 +42,13 @@ public class DatabaseContext
     {
         return Database.Table<Weather>().ToList();
     }
+    public string GetCityTemp(string name)
+    {
+        return Weathers.Where(w=>w.Name==name)
+            .OrderByDescending(w=>w.Datetime)
+            .FirstOrDefault()
+            .Temp.ToString();
+    }
     //public void GetCityWeather()
     //{
     //    return Database.ta
@@ -83,5 +90,14 @@ public class DatabaseContext
             }
         }
     }
+
+    public string GetCurrentTemp(string cityName)
+    {
+
+        return (Weathers.Where(x => x.Name == cityName)
+            .OrderByDescending(weather => weather.Datetime)
+            .FirstOrDefault()?.Temp.ToString()) ?? "unknown";
+    }
+
     // Add methods to insert, update, delete records
 }

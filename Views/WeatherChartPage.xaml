@@ -11,12 +11,12 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <VerticalStackLayout Spacing="20" Padding="20" HorizontalOptions="Center" VerticalOptions="Start">
+            <VerticalStackLayout Grid.Row="0" Spacing="10" Padding="10" HorizontalOptions="Center" VerticalOptions="Start">
 
-                <Label Text="Select Date Range" FontSize="Medium" HorizontalOptions="Center" TextColor="red"/>
+                <Label Text="Select Date Range" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" TextColor="red"/>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -25,27 +25,34 @@
                     </Grid.ColumnDefinitions>
 
                     <DatePicker x:Name="fromDatePicker" Grid.Column="0" HorizontalOptions="Fill" 
-                                TextColor="red" Format="M/d/yyyy" DateSelected="toDatePicker_DateSelected"/>
+                                TextColor="red" Format="M/d/yyyy" DateSelected="toDatePicker_DateSelected" BackgroundColor="Black"/>
                     <DatePicker x:Name="toDatePicker" Grid.Column="1" HorizontalOptions="Fill" 
-                                TextColor="red" Format="M/d/yyyy" DateSelected="toDatePicker_DateSelected"/>
+                                TextColor="red" Format="M/d/yyyy" DateSelected="toDatePicker_DateSelected" BackgroundColor="Black"/>
                 </Grid>
-                <Grid Margin="10" 
-                     RowDefinitions="Auto, Auto, *">
-                    <Label Text="Select a City" FontSize="Medium" HorizontalOptions="Center" TextColor="red"/>
-
-                    <Picker x:Name="cityPicker" Title="Select City" HorizontalOptions="Fill" BackgroundColor="Green" SelectedIndexChanged="cityPicker_SelectedIndexChanged">
-                    </Picker>
+                <Grid Grid.Row="1" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Select City" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="red"/>
+                    <Picker Grid.Column="1" x:Name="cityPicker" HorizontalOptions="Fill" BackgroundColor="Green" SelectedIndexChanged="cityPicker_SelectedIndexChanged" 
+                            HorizontalTextAlignment="Center" 
+                            VerticalTextAlignment="Center"
+                            FontSize="Medium"/>
 
                     <!-- Other elements -->
-                    <microcharts:ChartView 
-                        x:Name="chartView"
-                        Grid.Row="2"
-                        BackgroundColor="red"
-                        HeightRequest="250" />
+
                 </Grid>
+
             </VerticalStackLayout>
-
-
+            <microcharts:ChartView 
+                    x:Name="chartView"
+                    Grid.Row="1"
+                    BackgroundColor="red"
+                    MinimumHeightRequest="250"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                     />
         </Grid>
     </ContentPage.Content>
 
