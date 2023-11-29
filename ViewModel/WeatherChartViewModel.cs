@@ -19,6 +19,7 @@ public class WeatherChartViewModel : ViewModelBase
     public WeatherChartViewModel()
     {
         Cities = new(_dbContext.GetCitiesAsync());
+        Weathers = new(_dbContext.GetWeathersAsync());
         LoadDataCommand = new Command(async () => await LoadData());
     }
 
@@ -28,7 +29,7 @@ public class WeatherChartViewModel : ViewModelBase
     //public async Task LoadData(datet)
     internal ObservableCollection<Weather> LoadData(string cityName, DateTime start, DateTime end)
     {
-        List<Weather> weather = Cities.FirstOrDefault(x => x.City == cityName).Weather;
+        var weather = Weathers.Where(x => x.Name == cityName);
         Weathers = new ObservableCollection<Weather>(weather.Where(x => x.Datetime.IsBewteenTwoDates(start, end)).ToList());
         UpdateChart();
         return Weathers;

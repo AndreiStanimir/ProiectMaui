@@ -24,7 +24,7 @@
 
         private void LoadWeatherDetails()
         {
-            Weather = _dbContext.GetMajorCitiesAsync().Find(x => x.Name == Name);
+            Weather = _dbContext.GetWeathersAsync().Find(x => x.Name == Name);
         }
     }
 }

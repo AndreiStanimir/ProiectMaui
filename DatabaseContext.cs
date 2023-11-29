@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SQLite;
 using SQLiteNetExtensions.Extensions;
+using System.Diagnostics;
 
 namespace ProiectMaui;
 
@@ -37,11 +38,14 @@ public class DatabaseContext
         return Database.Table<CityInfo>().ToList();
     }
 
-    public List<Weather> GetMajorCitiesAsync()
+    public List<Weather> GetWeathersAsync()
     {
         return Database.Table<Weather>().ToList();
     }
-
+    //public void GetCityWeather()
+    //{
+    //    return Database.ta
+    //}
     public CityInfo GetCityInfoByWeatherIdAsync(int WeatherId)
     {
         return Database.Table<CityInfo>()
@@ -74,6 +78,8 @@ public class DatabaseContext
                 var city = Database.Table<CityInfo>().FirstOrDefault(x => x.City == weather.Name);
                 city.Weather.Add(weather);
                 Database.UpdateWithChildren(city);
+                //Database.Commit();
+                //Debug.Assert(Weathers.Where(x=>x.Name==weather.Name).Count>0);
             }
         }
     }
