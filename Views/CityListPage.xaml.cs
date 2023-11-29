@@ -5,7 +5,7 @@ public partial class CityListPage : ContentPage
     public CityListPage()
     {
         InitializeComponent();
-        BindingContext = new CityListViewModel();
+        //BindingContext = new CityListViewModel();
     }
 
     private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)

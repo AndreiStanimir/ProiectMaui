@@ -131,4 +131,8 @@
     <ItemGroup>
       <PRIResource Remove="Microcharts\**" />
     </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\Images\tokyo.jpg" />
+    </ItemGroup>
 </Project>

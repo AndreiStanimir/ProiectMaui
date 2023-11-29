@@ -13,34 +13,46 @@
                     SelectionMode="Single"
                     SelectionChanged="OnSelectionChanged">
         <CollectionView.ItemsLayout>
-            <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+            <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Frame BackgroundColor="#4CAF50"
                        CornerRadius="10"
-                       Padding="10"
+                       Padding="2"
 
                        >
                     <!-- Adjust the size to make it squarish -->
-                    <StackLayout Spacing="5">
-                        <Label Text="{Binding City}" 
+                    <AbsoluteLayout HorizontalOptions="Center">
+                        
+                        <Image Source="{Binding ImagePath}"
+                               MaximumHeightRequest="100"
+                               MinimumHeightRequest="100"
+                               HorizontalOptions="Center"
+                               />
+                        <StackLayout Spacing="5" HorizontalOptions="End">
+
+                            <Label Text="{Binding City}" 
                                FontAttributes="Bold"
                                TextColor="White"
                                HorizontalOptions="CenterAndExpand"
                                VerticalOptions="CenterAndExpand"
-                               FontSize="Medium"/>
-                        <Label Text="{Binding Region}" 
+                               FontSize="Medium"
+                               BackgroundColor="#55000000"/>
+                            <Label Text="{Binding Region}" 
                                FontAttributes="Italic"
                                TextColor="White"
                                HorizontalOptions="CenterAndExpand"
                                VerticalOptions="CenterAndExpand"
-                               FontSize="Small"/>
-                        <Label Text="{Binding CurrentTemp}"
+                               FontSize="Small"
+                                   BackgroundColor="#55000000"/>
+                            <Label Text="{Binding CurrentTemp}"
                                TextColor="White"
                                HorizontalOptions="CenterAndExpand"
-                               VerticalOptions="CenterAndExpand"/>
-                    </StackLayout>
+                               VerticalOptions="CenterAndExpand"
+                                   BackgroundColor="#55000000"/>
+                        </StackLayout>
+                    </AbsoluteLayout>
                 </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>
