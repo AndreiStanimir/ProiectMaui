@@ -29,7 +29,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 */
 using Microsoft.Extensions.Logging;
-
+using SkiaSharp.Views.Maui.Controls.Hosting;
+using Microcharts.Maui;
 namespace ProiectMaui;
 
 public static class MauiProgram
@@ -43,7 +44,8 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            });
+            })
+            .UseMicrocharts();
 
 #if DEBUG
         builder.Logging.AddDebug();

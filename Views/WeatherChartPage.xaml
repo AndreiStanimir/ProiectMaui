@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProiectMaui.WeatherChartPage"
              xmlns:viewmodels="clr-namespace:ProiectMaui"
-             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
              Title="Weather Chart"
              BackgroundColor="White">
     <ContentPage.BindingContext>
@@ -24,35 +24,28 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <DatePicker x:Name="fromDatePicker" Grid.Column="0" HorizontalOptions="Fill" TextColor="red" Format="M/d/yyyy"/>
-                    <DatePicker x:Name="toDatePicker" Grid.Column="1" HorizontalOptions="Fill" TextColor="red" Format="M/d/yyyy"/>
+                    <DatePicker x:Name="fromDatePicker" Grid.Column="0" HorizontalOptions="Fill" 
+                                TextColor="red" Format="M/d/yyyy" DateSelected="toDatePicker_DateSelected"/>
+                    <DatePicker x:Name="toDatePicker" Grid.Column="1" HorizontalOptions="Fill" 
+                                TextColor="red" Format="M/d/yyyy" DateSelected="toDatePicker_DateSelected"/>
                 </Grid>
+                <Grid Margin="10" 
+                     RowDefinitions="Auto, Auto, *">
+                    <Label Text="Select a City" FontSize="Medium" HorizontalOptions="Center" TextColor="red"/>
 
-                <Label Text="Select a City" FontSize="Medium" HorizontalOptions="Center" TextColor="red"/>
-                <Picker x:Name="cityPicker" Title="Select City" HorizontalOptions="Fill" >
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Baboon</x:String>
-                            <x:String>Capuchin Monkey</x:String>
-                            <x:String>Blue Monkey</x:String>
-                            <x:String>Squirrel Monkey</x:String>
-                            <x:String>Golden Lion Tamarin</x:String>
-                            <x:String>Howler Monkey</x:String>
-                            <x:String>Japanese Macaque</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                    <Picker x:Name="cityPicker" Title="Select City" HorizontalOptions="Fill" BackgroundColor="Green" SelectedIndexChanged="cityPicker_SelectedIndexChanged">
+                    </Picker>
 
-                <!-- Other elements -->
-
+                    <!-- Other elements -->
+                    <microcharts:ChartView 
+                        x:Name="chartView"
+                        Grid.Row="2"
+                        BackgroundColor="red"
+                        HeightRequest="250" />
+                </Grid>
             </VerticalStackLayout>
 
-            <!-- Placeholder for Weather Chart -->
-             <!--<lvc:CartesianChart
-                     Series="{Binding Series}"
-                     XAxes="{Binding XAxes}"
-                     LegendPosition="Right">
-                </lvc:CartesianChart>-->
+
         </Grid>
     </ContentPage.Content>
 
